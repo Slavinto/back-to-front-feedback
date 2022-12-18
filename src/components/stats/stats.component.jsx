@@ -18,7 +18,7 @@ const Stats = ({ data }) => {
 Stats.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      // id: PropTypes.number.isRequired,
       rating: PropTypes.number.isRequired,
       text: PropTypes.string.isRequired,
     })

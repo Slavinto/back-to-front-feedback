@@ -15,7 +15,7 @@ function FeedbackItem({ id, rating, text, onRemoveFeedbackItem }) {
 }
 
 FeedbackItem.propTypes = {
-  id: PropTypes.number.isRequired,
+  // id: PropTypes.number.isRequired,
   rating: PropTypes.number.isRequired,
   text: PropTypes.string.isRequired,
   onRemoveFeedbackItem: PropTypes.func.isRequired,
