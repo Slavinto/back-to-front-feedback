@@ -52,7 +52,7 @@ const FeedbackForm = ({ nextId, onSubmit }) => {
           <Button
             type="submit"
             version={"primary"}
-            isDisabled={review.trim().length < 10 && rating === ""}
+            isDisabled={review.trim().length < 10 || rating === ""}
           >
             Send
           </Button>
