@@ -1,15 +1,20 @@
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
+
 import Button from "../button/button.component.jsx";
 import Card from "../card/card.component.jsx";
 import Rating from "../rating/rating.component.jsx";
+import FeedbackContext from "../../context/feedback.context.jsx";
+import { getValue } from "@testing-library/user-event/dist/utils/index.js";
 
 const initRating = "";
 const initReview = "";
 
-const FeedbackForm = ({ nextId, onSubmit }) => {
+const FeedbackForm = () => {
   const [review, setReview] = useState(initReview);
   const [isTyping, setIsTyping] = useState(false);
   const [rating, setRating] = useState(initRating);
+  const { handleAddFeedbackItem, feedbackEdit, nextId } =
+    useContext(FeedbackContext);
 
   const handleRatingInputChange = (e) => {
     const rating = e.target.value;
@@ -27,13 +32,19 @@ const FeedbackForm = ({ nextId, onSubmit }) => {
     setReview(initReview);
   };
 
+  useEffect(() => {
+    feedbackEdit.isEditing &&
+      setReview(feedbackEdit.item.text) &&
+      setIsTyping(true);
+  }, [feedbackEdit]);
+
   return (
     <Card>
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          onSubmit({
-            id: nextId,
+          handleAddFeedbackItem({
+            id: feedbackEdit.isEditing ? feedbackEdit.item.id : nextId,
             rating: +rating,
             text: review,
           });
