@@ -4,7 +4,6 @@ import Button from "../button/button.component.jsx";
 import Card from "../card/card.component.jsx";
 import Rating from "../rating/rating.component.jsx";
 import FeedbackContext from "../../context/feedback.context.jsx";
-import { getValue } from "@testing-library/user-event/dist/utils/index.js";
 
 const initRating = "";
 const initReview = "";
@@ -12,14 +11,8 @@ const initReview = "";
 const FeedbackForm = () => {
   const [review, setReview] = useState(initReview);
   const [isTyping, setIsTyping] = useState(false);
-  const [rating, setRating] = useState(initRating);
-  const { handleAddFeedbackItem, feedbackEdit, nextId } =
+  const { handleAddFeedbackItem, feedbackEdit, nextId, setRating, rating } =
     useContext(FeedbackContext);
-
-  const handleRatingInputChange = (e) => {
-    const rating = e.target.value;
-    setRating(rating);
-  };
 
   const handleReviewInputChange = (e) => {
     setReview(e.target.value);
@@ -52,7 +45,7 @@ const FeedbackForm = () => {
         }}
       >
         <h2>How would you rate our service?</h2>
-        <Rating onChange={handleRatingInputChange} rating={+rating} />
+        <Rating rating={+rating} />
         <div className="input-group">
           <input
             type="text"
@@ -73,6 +66,7 @@ const FeedbackForm = () => {
             Review must be at least 10 symbols long.
           </div>
         )}
+
         {rating === "" && isTyping && (
           <div className="message">Please select rating</div>
         )}

@@ -1,4 +1,10 @@
-const Rating = ({ onChange, rating }) => {
+import { useContext } from "react";
+
+import FeedbackContext from "../../context/feedback.context.jsx";
+
+const Rating = ({ rating }) => {
+  const { handleRatingInputChange } = useContext(FeedbackContext);
+
   return (
     <ul className="rating">
       <li>
@@ -7,7 +13,7 @@ const Rating = ({ onChange, rating }) => {
           id="num1"
           name="rating"
           value="1"
-          onChange={onChange}
+          onChange={handleRatingInputChange}
           checked={rating === 1}
         />
         <label htmlFor="num1">1</label>
@@ -18,7 +24,7 @@ const Rating = ({ onChange, rating }) => {
           id="num2"
           name="rating"
           value="2"
-          onChange={onChange}
+          onChange={handleRatingInputChange}
           checked={rating === 2}
         />
         <label htmlFor="num2">2</label>
@@ -29,7 +35,7 @@ const Rating = ({ onChange, rating }) => {
           id="num3"
           name="rating"
           value="3"
-          onChange={onChange}
+          onChange={handleRatingInputChange}
           checked={rating === 3}
         />
         <label htmlFor="num3">3</label>
@@ -40,7 +46,7 @@ const Rating = ({ onChange, rating }) => {
           id="num4"
           name="rating"
           value="4"
-          onChange={onChange}
+          onChange={handleRatingInputChange}
           checked={rating === 4}
         />
         <label htmlFor="num4">4</label>
@@ -51,7 +57,7 @@ const Rating = ({ onChange, rating }) => {
           id="num5"
           name="rating"
           value="5"
-          onChange={onChange}
+          onChange={handleRatingInputChange}
           checked={rating === 5}
         />
         <label htmlFor="num5">5</label>
@@ -62,7 +68,7 @@ const Rating = ({ onChange, rating }) => {
           id="num6"
           name="rating"
           value="6"
-          onChange={onChange}
+          onChange={handleRatingInputChange}
           checked={rating === 6}
         />
         <label htmlFor="num6">6</label>
@@ -73,7 +79,7 @@ const Rating = ({ onChange, rating }) => {
           id="num7"
           name="rating"
           value="7"
-          onChange={onChange}
+          onChange={handleRatingInputChange}
           checked={rating === 7}
         />
         <label htmlFor="num7">7</label>
@@ -84,7 +90,7 @@ const Rating = ({ onChange, rating }) => {
           id="num8"
           name="rating"
           value="8"
-          onChange={onChange}
+          onChange={handleRatingInputChange}
           checked={rating === 8}
         />
         <label htmlFor="num8">8</label>
@@ -95,7 +101,7 @@ const Rating = ({ onChange, rating }) => {
           id="num9"
           name="rating"
           value="9"
-          onChange={onChange}
+          onChange={handleRatingInputChange}
           checked={rating === 9}
         />
         <label htmlFor="num9">9</label>
@@ -106,7 +112,7 @@ const Rating = ({ onChange, rating }) => {
           id="num10"
           name="rating"
           value="10"
-          onChange={onChange}
+          onChange={handleRatingInputChange}
           checked={rating === 10}
         />
         <label htmlFor="num10">10</label>
