@@ -11,8 +11,13 @@ const initReview = "";
 const FeedbackForm = () => {
   const [review, setReview] = useState(initReview);
   const [isTyping, setIsTyping] = useState(false);
-  const { handleAddFeedbackItem, feedbackEdit, nextId, setRating, rating } =
-    useContext(FeedbackContext);
+  const {
+    handleAddFeedbackItem,
+    handleUpdateFeedbackItem,
+    feedbackEdit,
+    setRating,
+    rating,
+  } = useContext(FeedbackContext);
 
   const handleReviewInputChange = (e) => {
     setReview(e.target.value);
@@ -36,11 +41,16 @@ const FeedbackForm = () => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          handleAddFeedbackItem({
-            id: feedbackEdit.isEditing ? feedbackEdit.item.id : nextId,
-            rating: +rating,
-            text: review,
-          });
+          feedbackEdit.isEditing
+            ? handleUpdateFeedbackItem({
+                id: feedbackEdit.item.id,
+                rating: +rating,
+                text: review,
+              })
+            : handleAddFeedbackItem({
+                rating: +rating,
+                text: review,
+              });
           resetForm();
         }}
       >
